@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PushSDK/PushSDK.iml" filepath="$PROJECT_DIR$/PushSDK/PushSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WaveView/WaveView.iml" filepath="$PROJECT_DIR$/WaveView/WaveView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lanyue-master.iml" filepath="$PROJECT_DIR$/lanyue-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/librarys/librarys.iml" filepath="$PROJECT_DIR$/librarys/librarys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraryss/libraryss.iml" filepath="$PROJECT_DIR$/libraryss/libraryss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/likebutton/likebutton.iml" filepath="$PROJECT_DIR$/likebutton/likebutton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oneKeyShareNew/oneKeyShareNew.iml" filepath="$PROJECT_DIR$/oneKeyShareNew/oneKeyShareNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/socialization/socialization.iml" filepath="$PROJECT_DIR$/socialization/socialization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vitamio/vitamio.iml" filepath="$PROJECT_DIR$/vitamio/vitamio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weiboSDK/weiboSDK.iml" filepath="$PROJECT_DIR$/weiboSDK/weiboSDK.iml" />
+    </modules>
+  </component>
+</project>

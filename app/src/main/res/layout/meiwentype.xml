@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+       android:background="@color/hongse"
+        android:textColor="#fff"
+        android:text="美文类型"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:textSize="20dp"
+        />
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/rlvmeiwentype"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+</LinearLayout>

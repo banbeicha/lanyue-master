@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5F584E"
+    android:orientation="vertical"
+    tools:context="com.wz.lanyue.banke.HuaBangContentActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/FlHuaBang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000">
+
+            <io.vov.vitamio.widget.VideoView
+                android:id="@+id/vvhuabang"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <LinearLayout
+                android:id="@+id/llControl"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_horizontal|bottom">
+
+                <android.support.v7.widget.AppCompatSeekBar
+                    android:id="@+id/seekbarHuabang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:indeterminate="false"
+                    android:maxHeight="2dp"
+                    android:minHeight="2dp"
+                    android:progressDrawable="@drawable/seekbar"
+                    android:thumb="@drawable/mv_playbar_btn" />
+
+                <TextView
+                    android:id="@+id/tvhuabangtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="#fff" />
+
+                <ImageView
+                    android:id="@+id/ivHuaBangfull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/play_controller_full" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivHuangBangPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/pause_video"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/tvvideoload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#fff"
+                />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/lltitle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivtitleback"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/title_back" />
+
+            <TextView
+                android:id="@+id/tvHuabBangContentTitle"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- wave:blow_wave_color 定义波形的颜色 ，顶部波形平面的下方 -->
+    <!-- wave_height 定义波浪的高度 -->
+    <!-- wave_hz 定义波浪起伏的频率赫兹。 -->
+    <!-- wave_length 定义波浪的长度 -->
+    <!-- wave:progress 为整型值，以0-100,100表示最高位波浪，0表示最低波浪 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2E281E"
+        android:padding="8dp"
+        android:scaleType="fitStart"
+        android:src="@mipmap/player_mv_p" />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1px"
+        android:background="#2E281E"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.wz.lanyue.banke.widgetview.CircleImageView
+            android:id="@+id/ccivHuaBangpic"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/morenhead" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:gravity="bottom"
+                android:text="艺人："
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/tvHuaBangYiRen"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:gravity="top"
+                android:textColor="#159470" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvHuaBangTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:textColor="#807D78" />
+
+        <TextView
+            android:id="@+id/tvHuaBangMiaoshu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:lineSpacingExtra="4dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:textColor="#fff"
+            android:paddingBottom="8dp"
+            />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

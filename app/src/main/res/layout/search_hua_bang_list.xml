@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginLeft="12dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="12dp">
+
+        <TextView
+            android:id="@+id/tvHuaBangSearchTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvHuaBangSearchAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#159470"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvHuaSearchPlayfangNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#B4B4B6"
+            android:textSize="12sp" />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/ivHuaSearchPic"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/zhanweitu" />
+
+</LinearLayout>

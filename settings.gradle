@@ -1,0 +1,4 @@
+include ':app', ':likebutton', ':library', ':librarys', ':libraryss', ':vitamio', ':WaveView', ':PushSDK'
+include ':weiboSDK'
+include ':oneKeyShareNew'
+include ':socialization'

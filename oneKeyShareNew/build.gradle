@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 17
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile files('src/libs/MobCommons-2016.0406.1915.jar')
+    compile files('src/libs/MobTools-2016.0406.1915.jar')
+    compile files('src/libs/ShareSDK-Core-2.7.1.jar')
+    compile files('src/libs/ShareSDK-QQ-2.7.1.jar')
+    compile files('src/libs/ShareSDK-QZone-2.7.1.jar')
+    compile files('src/libs/ShareSDK-TencentWeibo-2.7.1.jar')
+    compile files('src/libs/ShareSDK-Renren-2.7.1.jar')
+}

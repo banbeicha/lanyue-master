@@ -1,0 +1,98 @@
+[
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_unlike.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_unlike.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\list_item_first_normal.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\list_item_first_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_toolbar_comment.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_toolbar_comment.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_tabbg.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_tabbg.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_toolbar_divier.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_toolbar_divier.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_default_icon.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_default_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\list_item_single_normal.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\list_item_single_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_floor_sgl.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_floor_sgl.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_like.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_like.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_vip.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_vip.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_rp_chacc.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_rp_chacc.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_rp_reply.xml",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_rp_reply.xml"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\pointer.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\pointer.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_floor_end.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_floor_end.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_floor_mid.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_floor_mid.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_rp_reply_pre.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_rp_reply_pre.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_popview.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_popview.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_rp_reply_nor.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_rp_reply_nor.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_tabbg_1.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_tabbg_1.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\list_item_middle_normal.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\list_item_middle_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_oks_ptr_ptr.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\exploded-aar\\lanyue-master\\oneKeyShareNew\\unspecified\\res\\drawable-hdpi-v4\\ssdk_oks_ptr_ptr.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\list_item_last_normal.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\list_item_last_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_rp_back.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_rp_back.png"
+    },
+    {
+        "merged": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ssdk_social_cl_floor_1st.9.png",
+        "source": "C:\\Users\\BANBEICHAS\\Desktop\\lanyue-master\\socialization\\src\\main\\res\\drawable-hdpi\\ssdk_social_cl_floor_1st.9.png"
+    }
+]
