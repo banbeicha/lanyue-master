@@ -33,6 +33,8 @@ import org.xutils.x;
 
 import java.util.ArrayList;
 
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
 /**
  * Created by BANBEICHAS on 2016/4/20.
  */
@@ -43,6 +45,7 @@ public class InItViewhuaBangData implements ActionSheet.ActionSheetListener {
     MyAdapter myAdapter;
     private RequestParams requestParams;
     int number=20;
+    int flag;
     public void initview( FragmentActivity context, String type, View view) {
         this.context = context;
         xRecyclerView = (XRecyclerView) view.findViewById(R.id.rlvhuangbang);
@@ -139,12 +142,30 @@ public class InItViewhuaBangData implements ActionSheet.ActionSheetListener {
 
     @Override
     public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-        actionSheet.dismiss();
+
     }
 
     @Override
     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+             switch (index){
+               case 0: shared(); break;
+                 case 1:donwLoad();break;
+             }
+    }
 
+    private void donwLoad() {
+
+    }
+
+    private void shared() {
+        OnekeyShare oks = new OnekeyShare();
+      HuaBang huaBang=  huaBangArrayList.get(flag);
+        oks.setTitle(huaBang.getTitle());
+        oks.setTitleUrl(huaBang.getUrl());
+        oks.setText(huaBang.getTitle()+huaBang.getUrl()+"来自半刻MV分享");
+        oks.setSite("半刻");
+        oks.setVenueName("半刻");
+       oks.show(context);
     }
 
     private class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
@@ -157,7 +178,7 @@ public class InItViewhuaBangData implements ActionSheet.ActionSheetListener {
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
+        public void onBindViewHolder(MyViewHolder holder, final int position) {
             final HuaBang huaBang = huaBangArrayList.get(position);
             if (!"".equals(huaBang.getAlbumImg())) {
                 PicassoHelper.noyuanjiaosetimg(context, huaBang.getAlbumImg(), holder.ivhuabangbg);
@@ -179,7 +200,7 @@ public class InItViewhuaBangData implements ActionSheet.ActionSheetListener {
                 @Override
                 public boolean onLongClick(View v) {
               ActionSheet.createBuilder(context,context.getSupportFragmentManager()).setCancelButtonTitle("取消").setOtherButtonTitles("分享","下载").setCancelableOnTouchOutside(true).setListener(InItViewhuaBangData.this).show();
-
+                flag=position;
                     return true;
                 }
             });

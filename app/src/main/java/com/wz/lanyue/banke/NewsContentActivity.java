@@ -63,8 +63,9 @@ public class NewsContentActivity extends AppCompatActivity {
         oks.setTitle(title);
         oks.setTitleUrl(url);
         oks.setUrl(url);
-        oks.setSite("览阅");
-        oks.setVenueName("览阅");
+        oks.setText(title+url+"来自半刻新闻分享");
+        oks.setSite("半刻");
+        oks.setVenueName("半刻");
         oks.disableSSOWhenAuthorize();
     }
 
