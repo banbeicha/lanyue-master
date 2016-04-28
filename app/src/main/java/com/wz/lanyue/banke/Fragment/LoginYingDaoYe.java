@@ -55,13 +55,15 @@ public class LoginYingDaoYe extends Fragment implements View.OnClickListener{
         switch (v.getId()){
         case R.id.tvlogin:
         mSsoHandler.authorizeWeb(new AuthListener(getContext()));
+            SharedPreferences sharedPreferences=getActivity().getSharedPreferences("see", Context.MODE_PRIVATE);
+            sharedPreferences.edit().putBoolean("isFist",true).commit();
             getActivity().finish();
 
             break;
             case R.id.tvsee:
                 startActivity(new Intent(getActivity(), HomeActivity.class));
-                SharedPreferences sharedPreferences=getActivity().getSharedPreferences("see", Context.MODE_PRIVATE);
-               sharedPreferences.edit().putBoolean("isFist",true).commit();
+                SharedPreferences sharedPreferences1=getActivity().getSharedPreferences("see", Context.MODE_PRIVATE);
+               sharedPreferences1.edit().putBoolean("isFist",true).commit();
                 MyApplication.isLogin=false;
                 break;
         }
