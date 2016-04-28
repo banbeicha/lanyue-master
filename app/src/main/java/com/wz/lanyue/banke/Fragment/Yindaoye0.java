@@ -26,12 +26,13 @@ public class Yindaoye0 extends Fragment {
             startActivity(new Intent(getActivity(), HomeActivity.class));
             MyApplication.isLogin=true;
         }
-           boolean isfist=    getActivity().getSharedPreferences("see", Context.MODE_PRIVATE).getBoolean("isFist",false);
-           if(isfist){
-               startActivity(new Intent(getActivity(), HomeActivity.class));
-               MyApplication.isLogin=false;
-           }
-
+        else {
+            boolean isfist = getActivity().getSharedPreferences("see", Context.MODE_PRIVATE).getBoolean("isFist", false);
+            if (isfist) {
+                startActivity(new Intent(getActivity(), HomeActivity.class));
+                MyApplication.isLogin = false;
+            }
+        }
         return inflater.inflate(R.layout.yingdaoye0,container,false);
     }
 }
