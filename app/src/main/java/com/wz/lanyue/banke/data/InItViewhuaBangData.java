@@ -1,10 +1,11 @@
 package com.wz.lanyue.banke.data;
 
-import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,13 +25,17 @@ import com.wz.lanyue.banke.model.HuaBangList;
 import com.wz.lanyue.banke.util.NetworkState;
 import com.wz.lanyue.banke.util.PicassoHelper;
 import com.wz.lanyue.banke.util.ToastHelper;
+import com.wz.lanyue.banke.widgetview.AlertDialog;
 
 
 import org.json.JSONObject;
 import org.xutils.common.Callback;
+import org.xutils.common.util.FileUtil;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import cn.sharesdk.onekeyshare.OnekeyShare;
@@ -46,6 +51,8 @@ public class InItViewhuaBangData implements ActionSheet.ActionSheetListener {
     private RequestParams requestParams;
     int number=20;
     int flag;
+    private Uri uri;
+
     public void initview( FragmentActivity context, String type, View view) {
         this.context = context;
         xRecyclerView = (XRecyclerView) view.findViewById(R.id.rlvhuangbang);
@@ -148,18 +155,63 @@ public class InItViewhuaBangData implements ActionSheet.ActionSheetListener {
     @Override
     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
              switch (index){
-               case 0: shared(); break;
-                 case 1:donwLoad();break;
+               case 0: shared(huaBangArrayList.get(flag),context); break;
+                 case 1:donwLoad(huaBangArrayList.get(flag),context);break;
              }
     }
 
-    private void donwLoad() {
+    public void donwLoad(final HuaBang huaBang, final Context context) {
+        String uhdurl = huaBang.getUhdUrl();
+        final String hdurl = huaBang.getHdUrl();
+        final String url = huaBang.getUrl();
+        if (NetworkState.isWifi(context)) {
+            if (!"".equals(uhdurl)) {
+                uri = Uri.parse(uhdurl);
+            } else if (!"".equals(hdurl)) {
+                uri = Uri.parse(hdurl);
+            } else if (!"".equals(url)) {
+                uri = Uri.parse(url);
+            } else {
+                ToastHelper.show(context, "获取下载链接失败");
+            }
+            startDownLoad(huaBang, context);
+        }
+        else {
+            new AlertDialog(context).builder().setTitle("").setMsg("当前为移动网络，下载会消耗大量流量，确定要下载吗").setNegativeButton("否", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            }).setPositiveButton("是", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!"".equals(url)) {
+                      uri=Uri.parse(url);
+                     startDownLoad(huaBang, context);
+                    } else {
+                        ToastHelper.show(context, "获取下载链接失败");
+                    }
+                }
+            }).show();}
+
 
     }
 
-    private void shared() {
+    private void startDownLoad(HuaBang huaBang, Context context) {
+        DownloadManager downloadManager= (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setTitle(huaBang.getTitle());
+        File file = new File(Environment.getExternalStorageDirectory() + "/BanKe/MV/");
+        if (!file.exists() && !file.isDirectory()) {
+            file.getParentFile().mkdirs();
+            file.mkdir();
+        }
+        request.setDestinationUri(Uri.fromFile(new File(file, huaBang.getTitle() + ".mp4")));
+        downloadManager.enqueue(request);
+    }
+
+    public  void shared(HuaBang huaBang,Context context) {
         OnekeyShare oks = new OnekeyShare();
-      HuaBang huaBang=  huaBangArrayList.get(flag);
         oks.setTitle(huaBang.getTitle());
         oks.setTitleUrl(huaBang.getUrl());
         oks.setText(huaBang.getTitle()+huaBang.getUrl()+"来自半刻MV分享");

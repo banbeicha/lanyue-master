@@ -17,8 +17,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.baoyz.actionsheet.ActionSheet;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+import com.wz.lanyue.banke.data.InItViewhuaBangData;
 import com.wz.lanyue.banke.model.HuaBang;
 import com.wz.lanyue.banke.model.HuaBangList;
 import com.wz.lanyue.banke.util.PicassoHelper;
@@ -28,7 +31,7 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 import java.util.ArrayList;
-public class SearchHuaBangActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher {
+public class SearchHuaBangActivity extends AppCompatActivity implements View.OnClickListener, TextWatcher, ActionSheet.ActionSheetListener {
     LinearLayout llSearchHuaBang;
     ImageView ivSearcHuaBangBack;
     EditText etHuaBangSearchKeyord;
@@ -36,6 +39,8 @@ public class SearchHuaBangActivity extends AppCompatActivity implements View.OnC
     XRecyclerView XRlvSearch;
    ArrayList<HuaBang> arrayList;
     MyAdapter myAdapter;
+    private int flag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,7 +135,21 @@ public class SearchHuaBangActivity extends AppCompatActivity implements View.OnC
     public void afterTextChanged(Editable s) {
 
     }
-   private class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
+
+    @Override
+    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+
+    }
+
+    @Override
+    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+        switch (index){
+            case 0: new InItViewhuaBangData().shared(arrayList.get(flag),this); break;
+            case 1:new InItViewhuaBangData().donwLoad(arrayList.get(flag),this);break;
+        }
+    }
+
+    private class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
        @Override
        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -140,7 +159,7 @@ public class SearchHuaBangActivity extends AppCompatActivity implements View.OnC
        }
 
        @Override
-       public void onBindViewHolder(MyViewHolder holder, int position) {
+       public void onBindViewHolder(MyViewHolder holder, final int position) {
        final HuaBang huaBang=  arrayList.get(position);
            if(huaBang!=null&&!"".equals(huaBang)){
                holder.tvHuaBangSearchTitle.setText(huaBang.getTitle());
@@ -156,6 +175,15 @@ public class SearchHuaBangActivity extends AppCompatActivity implements View.OnC
                        startActivity(new Intent(SearchHuaBangActivity.this,HuaBangContentActivity.class).putExtra("huabang",huaBang));
                    }
                });
+               holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                   @Override
+                   public boolean onLongClick(View v) {
+                       ActionSheet.createBuilder(SearchHuaBangActivity.this,getSupportFragmentManager()).setCancelButtonTitle("取消").setOtherButtonTitles("分享","下载").setCancelableOnTouchOutside(true).setListener(SearchHuaBangActivity.this).show();
+                     flag=position;
+                       return true;
+                   }
+               });
+
            }
        }
 
