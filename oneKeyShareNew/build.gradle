@@ -22,6 +22,11 @@ dependencies {
     compile files('src/libs/ShareSDK-Core-2.7.1.jar')
     compile files('src/libs/ShareSDK-QQ-2.7.1.jar')
     compile files('src/libs/ShareSDK-QZone-2.7.1.jar')
-    compile files('src/libs/ShareSDK-TencentWeibo-2.7.1.jar')
-    compile files('src/libs/ShareSDK-Renren-2.7.1.jar')
+    compile files('src/libs/ShareSDK-ShortMessage-2.7.1.jar')
+    compile files('src/libs/ShareSDK-Wechat-2.7.1.jar')
+    compile files('src/libs/ShareSDK-Wechat-Core-2.7.1.jar')
+    compile files('src/libs/ShareSDK-Yixin-2.7.1.jar')
+    compile files('src/libs/ShareSDK-Yixin-Core-2.7.1.jar')
+    compile files('src/libs/ShareSDK-Yixin-Moments-2.7.1.jar')
+    compile files('src/libs/ShareSDK-Email-2.7.1.jar')
 }

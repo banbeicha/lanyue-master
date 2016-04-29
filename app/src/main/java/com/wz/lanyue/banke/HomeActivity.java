@@ -60,16 +60,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Oauth2AccessToken mAccessToken;
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-       myBroadcastReceive=new MyBroadcastReceive();
-
-      registerReceiver(myBroadcastReceive,intentFilter);
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -78,6 +68,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         PushAgent.getInstance(this).onAppStart();
         String device_token = UmengRegistrar.getRegistrationId(this);
         mPushAgent.setPushCheck(true);
+        IntentFilter intentFilter=new IntentFilter();
+        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        myBroadcastReceive=new MyBroadcastReceive();
+        registerReceiver(myBroadcastReceive,intentFilter);
         initView();
     }
 

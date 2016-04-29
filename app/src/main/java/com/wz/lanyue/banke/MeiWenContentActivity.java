@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -17,11 +18,15 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
 public class MeiWenContentActivity extends AppCompatActivity {
 Intent intent;
     int aid;
     int which;
     TextView tvmeiwentitle,tvmeiwenauthor,tvmeiwenliulanshu,tvmeiwencontent;
+    private OnekeyShare oks;
+String link;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +93,7 @@ Intent intent;
                 ActionBarSetting.setTitle(getSupportActionBar(),author);
                 tvmeiwenauthor.setText(author+"    "+ DateUtil.getZHdate(article.optString("date")));
                 tvmeiwenliulanshu.setText("浏览"+" "+article.optString("count"));
+                link=article.optString("link");
                setContentTextView(article.optString("content"));
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -113,7 +119,25 @@ Intent intent;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
+        switch (item.getItemId()){
+            case android.R.id.home:finish();break;
+            case R.id.item_shared: oks = new OnekeyShare();
+                oks.setTitle(tvmeiwentitle.getText().toString());
+                oks.setTitleUrl(link);
+                oks.setUrl(link);
+                oks.setText(tvmeiwentitle.getText().toString()+link+"美文分享@来自半刻");
+                oks.setSite("半刻");
+                oks.setVenueName("半刻");
+                oks.show(this);
+                break;
+
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+getMenuInflater().inflate(R.menu.meiwencontent,menu);
+        return true;
     }
 }
