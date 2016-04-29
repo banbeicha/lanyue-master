@@ -11,12 +11,14 @@
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
         <item name="actionSheetStyle">@style/ActionSheetStyleIOS7</item>
     </style>
+
     <style name="AnimationActivity" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/modal_activity_open_enter</item>
         <item name="android:activityOpenExitAnimation">@anim/modal_activity_open_exit</item>
         <item name="android:activityCloseExitAnimation">@anim/modal_activity_close_exit</item>
         <item name="android:activityCloseEnterAnimation">@anim/modal_activity_close_enter</item>
     </style>
+
     <style name="myAppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimaryDark">#F5FBFB</item>
         <item name="windowActionBar">false</item>
@@ -26,6 +28,7 @@
     <style name="myAppTheme1" parent="Theme.AppCompat.Light">
         <item name="colorPrimaryDark">#F9F9F9</item>
     </style>
+
     <style name="myAppTheme2" parent="Theme.AppCompat.Light">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
@@ -34,20 +37,36 @@
         <item name="android:textColorPrimary">#fff</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
     </style>
+
     <style name="myAppTheme3" parent="AppTheme">
         <item name="android:textColorPrimary">#fff</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-         <item name="actionSheetStyle">@style/ActionSheetStyleIOS7</item>
+         
+        <item name="actionSheetStyle">@style/ActionSheetStyleIOS7</item>
     </style>
+
     <style name="myAppTheme4" parent="AppTheme">
-    <item name="colorPrimaryDark">#000</item>
+        <item name="colorPrimaryDark">#000</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
 
 
 </resources>

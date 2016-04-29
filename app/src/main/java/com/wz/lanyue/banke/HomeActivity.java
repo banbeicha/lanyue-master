@@ -225,8 +225,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             if (!TextUtils.isEmpty(s)){
                 try {
                     JSONObject jsonObject=new JSONObject(s);
-                    String result=jsonObject.getString("result");
+                    String result=jsonObject.optString("result");
                     if ("true".equalsIgnoreCase(result)) {
+                        AccessTokenKeeper.clear(HomeActivity.this);
+                        mAccessToken = null;
+                    }
+                    else if(!"".equalsIgnoreCase(jsonObject.optString("error"))){
                         AccessTokenKeeper.clear(HomeActivity.this);
                         mAccessToken = null;
                     }

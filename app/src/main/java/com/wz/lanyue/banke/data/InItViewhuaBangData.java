@@ -30,14 +30,11 @@ import com.wz.lanyue.banke.widgetview.AlertDialog;
 
 import org.json.JSONObject;
 import org.xutils.common.Callback;
-import org.xutils.common.util.FileUtil;
+
 import org.xutils.http.RequestParams;
 import org.xutils.x;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
 /**

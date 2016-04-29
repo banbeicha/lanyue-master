@@ -134,7 +134,10 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-      startActivityForResult((new Intent(context, WriteWBActivity.class)),0);
+        switch (v.getId()){
+            case R.id.fabfaweibo:    startActivityForResult((new Intent(context, WriteWBActivity.class)),0);break;
+
+        }
     }
 
     private class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
@@ -151,7 +154,6 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
              final Status status = statusList.get(position);
             User user = status.getUser();
             holder.tvfriendname.setText(user.getScreen_name());
-            String url = user.getProfile_url();
             PicassoHelper.setimg(context, user.getProfile_image_url(), holder.ivfriendhead);
             String source = status.getSource();
             if ("".equals(source)) {
@@ -160,10 +162,12 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
                 holder.tvfriendsource.setText(DateUtil.getDate(status.getCreated_at()) + "  来自" + Html.fromHtml(source));
             }
             holder.tvfriendcontent.setText(StringUtil.getWeiboContent(context, holder.tvfriendcontent, status.getText()));
+            holder.tvcommentnumber.setText("");
             if (status.getComments_count() != 0) {
                 holder.tvcommentnumber.setText(""+status.getComments_count());
 
             }
+            holder.tvzhaungfaWB.setText("");
            if(status.getReposts_count()!=0){
                holder.tvzhaungfaWB.setText("  "+status.getReposts_count());
            }
@@ -285,7 +289,7 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
         }
     }
 
-    class MypicAdapter extends BaseAdapter {
+    class MypicAdapter extends BaseAdapter   {
 
 
         @Override
@@ -305,20 +309,24 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-
                 convertView = LayoutInflater.from(context).inflate(R.layout.timeline_weibopiclist, null, false);
             }
             ImageView ivtimelineweibopic = (ImageView) convertView.findViewById(R.id.ivtimelineweibopic);
             if (weibopic != null) {
                 if (position < weibopic.size()) {
+                    if (!"".equals(weibopic.get(position))){
                     PicassoHelper.noyuanjiaosetimg(context, weibopic.get(position), ivtimelineweibopic);
+                    }
                 }
 
             }
+
             return convertView;
         }
+
+
     }
 
     class MyzhaungfapicAdapter extends BaseAdapter {
@@ -349,7 +357,9 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
             ImageView ivtimelineweibopic = (ImageView) convertView.findViewById(R.id.ivtimelineweibopic);
             if (zhaungfaweibopic != null) {
                 if (position < zhaungfaweibopic.size()) {
-                    PicassoHelper.noyuanjiaosetimg(context, zhaungfaweibopic.get(position), ivtimelineweibopic);
+                    if (!"".equals(zhaungfaweibopic.get(position))) {
+                        PicassoHelper.noyuanjiaosetimg(context, zhaungfaweibopic.get(position), ivtimelineweibopic);
+                    }
                 }
 
             }

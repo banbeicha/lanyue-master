@@ -1,19 +1,15 @@
 package com.wz.lanyue.banke;
 
-import android.app.Activity;
-import android.content.ComponentName;
+
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSeekBar;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -33,10 +29,7 @@ import com.wz.lanyue.banke.widgetview.CircleImageView;
 
 import org.json.JSONObject;
 import org.xutils.common.Callback;
-import org.xutils.common.util.FileUtil;
 import org.xutils.http.RequestParams;
-import org.xutils.http.loader.FileLoader;
-import org.xutils.http.request.LocalFileRequest;
 import org.xutils.x;
 
 import java.text.SimpleDateFormat;

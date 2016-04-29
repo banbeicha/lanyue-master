@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+
 import android.widget.TextView;
 
 import com.sina.weibo.sdk.auth.AuthInfo;
@@ -17,7 +17,7 @@ import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.wz.lanyue.banke.HomeActivity;
 import com.wz.lanyue.banke.MyApplication;
 import com.wz.lanyue.banke.R;
-import com.wz.lanyue.banke.model.AccessTokenKeeper;
+
 import com.wz.lanyue.banke.util.AuthListener;
 import com.wz.lanyue.banke.util.Constants;
 

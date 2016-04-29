@@ -19,7 +19,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -224,10 +225,6 @@
         <service
             android:name="com.umeng.message.local.UmengLocalNotificationService"
             android:exported="false" />
-        <service
-            android:name=".Service.MyService"
-            android:enabled="true"
-            android:exported="true" />
     </application>
 
 </manifest>
