@@ -211,7 +211,7 @@ public class InItViewhuaBangData implements ActionSheet.ActionSheetListener {
         OnekeyShare oks = new OnekeyShare();
         oks.setTitle(huaBang.getTitle());
         oks.setTitleUrl(huaBang.getUrl());
-        oks.setText(huaBang.getTitle()+huaBang.getUrl()+"MV分享@来自半刻");
+        oks.setText(huaBang.getTitle()+huaBang.getUrl()+"分享@来自半刻");
         oks.setSite("半刻");
         oks.setVenueName("半刻");
        oks.show(context);

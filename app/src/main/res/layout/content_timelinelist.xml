@@ -17,12 +17,10 @@
             android:layout_height="50dp" />
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="10dp">
-
             <TextView
                 android:id="@+id/tvfriendname"
                 android:layout_width="match_parent"
@@ -61,6 +59,7 @@
         android:layout_margin="10dp"
         android:horizontalSpacing="4dp"
         android:numColumns="3"
+        android:descendantFocusability="blocksDescendants"
         android:scrollbars="none"
         android:verticalSpacing="4dp"
         android:visibility="gone"></com.wz.lanyue.banke.widgetview.MyGridView>

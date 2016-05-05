@@ -1,4 +1,5 @@
 package com.wz.lanyue.banke.Fragment;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,15 +8,18 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.orhanobut.dialogplus.DialogPlus;
@@ -40,9 +44,10 @@ import com.wz.lanyue.banke.widgetview.CircleImageView;
 import com.wz.lanyue.banke.widgetview.CustomClipLoading;
 import com.wz.lanyue.banke.widgetview.MyGridView;
 import com.wz.lanyue.banke.widgetview.RecycleViewDivider;
+
 import java.util.ArrayList;
 
-public class WBTimeLine extends Fragment implements View.OnClickListener{
+public class WBTimeLine extends Fragment implements View.OnClickListener {
     private StatusesAPI statusesAPI;
     ArrayList<Status> statusList;
     XRecyclerView recyclerView;
@@ -53,6 +58,7 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
     RelativeLayout relativeLayout;
     FloatingActionButton floatingActionButton;
     private MyAdapter myAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,7 +71,7 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
 
     private void initView(View view) {
         customClipLoading = (CustomClipLoading) view.findViewById(R.id.customClipLoading);
-        floatingActionButton= (FloatingActionButton) view.findViewById(R.id.fabfaweibo);
+        floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fabfaweibo);
         floatingActionButton.setOnClickListener(this);
         relativeLayout = (RelativeLayout) view.findViewById(R.id.rlwbtimeline);
         recyclerView = (XRecyclerView) view.findViewById(R.id.rlvweibo);
@@ -81,17 +87,17 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
 
     private void shuaxinweibo() {
 
-       recyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
-           @Override
-           public void onRefresh() {
-               statusesAPI.friendsTimeline(0, 0, 50, 1, false, 0, false, shuaxinrequestListener);
-           }
+        recyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                statusesAPI.friendsTimeline(0, 0, 50, 1, false, 0, false, shuaxinrequestListener);
+            }
 
-           @Override
-           public void onLoadMore() {
+            @Override
+            public void onLoadMore() {
 
-           }
-       });
+            }
+        });
     }
 
     RequestListener shuaxinrequestListener = new RequestListener() {
@@ -134,8 +140,10 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.fabfaweibo:    startActivityForResult((new Intent(context, WriteWBActivity.class)),0);break;
+        switch (v.getId()) {
+            case R.id.fabfaweibo:
+                startActivityForResult((new Intent(context, WriteWBActivity.class)), 0);
+                break;
 
         }
     }
@@ -151,7 +159,7 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
 
         @Override
         public void onBindViewHolder(final MyViewHolder holder, final int position) {
-             final Status status = statusList.get(position);
+            final Status status = statusList.get(position);
             User user = status.getUser();
             holder.tvfriendname.setText(user.getScreen_name());
             PicassoHelper.setimg(context, user.getProfile_image_url(), holder.ivfriendhead);
@@ -164,38 +172,38 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
             holder.tvfriendcontent.setText(StringUtil.getWeiboContent(context, holder.tvfriendcontent, status.getText()));
             holder.tvcommentnumber.setText("");
             if (status.getComments_count() != 0) {
-                holder.tvcommentnumber.setText(""+status.getComments_count());
+                holder.tvcommentnumber.setText("" + status.getComments_count());
 
             }
             holder.tvzhaungfaWB.setText("");
-           if(status.getReposts_count()!=0){
-               holder.tvzhaungfaWB.setText("  "+status.getReposts_count());
-           }
+            if (status.getReposts_count() != 0) {
+                holder.tvzhaungfaWB.setText("  " + status.getReposts_count());
+            }
             Status retweeted_status = status.getRetweeted_status();
             zhuangfacaozuo(holder, retweeted_status);
             initweibopicdata(status, holder.myGridView);
-           holder.tvcommentnumber.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   Intent it=new Intent(getActivity(), WBComment.class);
-                   it.putExtra("id",status.getId());
-                   it.putExtra("commentnumber",status.getComments_count());
-                  startActivity(it);
-               }
-           });
+            holder.tvcommentnumber.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent it = new Intent(getActivity(), WBComment.class);
+                    it.putExtra("id", status.getId());
+                    it.putExtra("commentnumber", status.getComments_count());
+                    startActivity(it);
+                }
+            });
             holder.tvfriendname.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    UserAPIhelper.startUserInfoactivity(context,holder.tvfriendname.getText().toString());
+                    UserAPIhelper.startUserInfoactivity(context, holder.tvfriendname.getText().toString());
                 }
             });
             holder.tvzhaungfaWB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  View view=  LayoutInflater.from(context).inflate(R.layout.zhuangfaweibodialog,null,false);
-                    DialogPlus dialogPlus=DialogPlus.newDialog(context).setContentHolder(new ViewHolder(view)).setGravity(Gravity.BOTTOM).create();
-                   dialogPlus.show();
-                   zhuangfaweibo(view,status,dialogPlus);
+                    View view = LayoutInflater.from(context).inflate(R.layout.zhuangfaweibodialog, null, false);
+                    DialogPlus dialogPlus = DialogPlus.newDialog(context).setContentHolder(new ViewHolder(view)).setGravity(Gravity.BOTTOM).create();
+                    dialogPlus.show();
+                    zhuangfaweibo(view, status, dialogPlus);
 
                 }
             });
@@ -210,35 +218,35 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
     }
 
     private void zhuangfaweibo(View view, final Status status, final DialogPlus dialogPlus) {
-        final EditBlogView ebzhuangfaliyou= (EditBlogView) view.findViewById(R.id.ebzhuangfaliyou);
-        Button btnzhuangfa= (Button) view.findViewById(R.id.btnzhuangfa);
-        final RequestListener requestListener=new RequestListener() {
+        final EditBlogView ebzhuangfaliyou = (EditBlogView) view.findViewById(R.id.ebzhuangfaliyou);
+        Button btnzhuangfa = (Button) view.findViewById(R.id.btnzhuangfa);
+        final RequestListener requestListener = new RequestListener() {
             @Override
             public void onComplete(String s) {
-                ToastHelper.show(context,"转发成功");
+                ToastHelper.show(context, "转发成功");
                 statusesAPI.friendsTimeline(0, 0, 50, 1, false, 0, false, shuaxinrequestListener);
                 dialogPlus.dismiss();
             }
 
             @Override
             public void onWeiboException(WeiboException e) {
-                ToastHelper.show(context,"转发失败");
+                ToastHelper.show(context, "转发失败");
             }
         };
-      btnzhuangfa.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              com.sina.weibo.sdk.openapi.legacy.StatusesAPI statusesAPI1=new com.sina.weibo.sdk.openapi.legacy.StatusesAPI(context,MyApplication.appKey,MyApplication.getToken(context));
-              statusesAPI1.repost(Long.parseLong(status.getIdstr()),ebzhuangfaliyou.getText().toString(),0,requestListener);
-          }
-      });
+        btnzhuangfa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                com.sina.weibo.sdk.openapi.legacy.StatusesAPI statusesAPI1 = new com.sina.weibo.sdk.openapi.legacy.StatusesAPI(context, MyApplication.appKey, MyApplication.getToken(context));
+                statusesAPI1.repost(Long.parseLong(status.getIdstr()), ebzhuangfaliyou.getText().toString(), 0, requestListener);
+            }
+        });
 
     }
 
     private void zhuangfacaozuo(MyViewHolder holder, Status retweeted_status) {
         if (retweeted_status != null) {
             User retweeted_User = retweeted_status.getUser();
-            if(retweeted_User!=null) {
+            if (retweeted_User != null) {
                 holder.tvzhuangfafriendcontent.setVisibility(View.VISIBLE);
                 holder.tvzhuangfafriendcontent.setText(StringUtil.getWeiboContent(context, holder.tvzhuangfafriendcontent, "@" + retweeted_User.getScreen_name() + ":" + retweeted_status.getText()));
                 zhaungfaweibopic = retweeted_status.getPic_urls();
@@ -256,21 +264,18 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
     }
 
     private void initweibopicdata(Status status, MyGridView myGridView) {
-
         weibopic = status.getPic_urls();
         if (weibopic != null && weibopic.size() != 0) {
-
             myGridView.setAdapter(new MypicAdapter());
             myGridView.setVisibility(View.VISIBLE);
         } else {
             myGridView.setVisibility(View.GONE);
         }
-
     }
 
     private class MyViewHolder extends RecyclerView.ViewHolder {
         CircleImageView ivfriendhead;
-        TextView tvfriendname, tvfriendsource, tvfriendcontent, tvzhuangfafriendcontent, tvcommentnumber,tvzhaungfaWB;
+        TextView tvfriendname, tvfriendsource, tvfriendcontent, tvzhuangfafriendcontent, tvcommentnumber, tvzhaungfaWB;
         MyGridView myGridView;
         MyGridView zhuangfamyGridView;
 
@@ -285,11 +290,11 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
             myGridView = (MyGridView) v.findViewById(R.id.gvweibopic);
             zhuangfamyGridView = (MyGridView) v.findViewById(R.id.gvzhuangfaweibopic);
             tvcommentnumber = (TextView) v.findViewById(R.id.tvcommentnumber);
-            tvzhaungfaWB= (TextView) v.findViewById(R.id.tvzhaungfaWB);
+            tvzhaungfaWB = (TextView) v.findViewById(R.id.tvzhaungfaWB);
         }
     }
 
-    class MypicAdapter extends BaseAdapter   {
+    class MypicAdapter extends BaseAdapter {
 
 
         @Override
@@ -310,14 +315,24 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
+            final viewholder viewholders;
             if (convertView == null) {
+                viewholders=new viewholder();
                 convertView = LayoutInflater.from(context).inflate(R.layout.timeline_weibopiclist, null, false);
+                viewholders.imageView=(ImageView) convertView.findViewById(R.id.ivtimelineweibopic);
+            convertView.setTag(viewholders);
             }
-            ImageView ivtimelineweibopic = (ImageView) convertView.findViewById(R.id.ivtimelineweibopic);
+          else{
+                viewholders= (WBTimeLine.viewholder) convertView.getTag();
+            }
             if (weibopic != null) {
                 if (position < weibopic.size()) {
-                    if (!"".equals(weibopic.get(position))){
-                    PicassoHelper.noyuanjiaosetimg(context, weibopic.get(position), ivtimelineweibopic);
+                    String picurl=weibopic.get(position);
+                    viewholders.imageView.setTag(picurl);
+                    if (!"".equals(picurl)) {
+                        if(viewholders.imageView.getTag().equals(picurl)) {
+                            PicassoHelper.noyuanjiaosetimg(context, picurl, viewholders.imageView);
+                        }
                     }
                 }
 
@@ -350,15 +365,25 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            final viewholder viewholder;
             if (convertView == null) {
-
+                viewholder = new viewholder();
                 convertView = LayoutInflater.from(context).inflate(R.layout.timeline_weibopiclist, null, false);
+                viewholder.imageView = (ImageView) convertView.findViewById(R.id.ivtimelineweibopic);
+                convertView.setTag(viewholder);
+            } else {
+                viewholder = (WBTimeLine.viewholder) convertView.getTag();
+
             }
-            ImageView ivtimelineweibopic = (ImageView) convertView.findViewById(R.id.ivtimelineweibopic);
+
             if (zhaungfaweibopic != null) {
                 if (position < zhaungfaweibopic.size()) {
-                    if (!"".equals(zhaungfaweibopic.get(position))) {
-                        PicassoHelper.noyuanjiaosetimg(context, zhaungfaweibopic.get(position), ivtimelineweibopic);
+                    String picurl=zhaungfaweibopic.get(position);
+                    viewholder.imageView.setTag(picurl);
+                    if (!"".equals(picurl)) {
+                        if (viewholder.imageView.getTag().toString().equals(picurl)) {
+                            PicassoHelper.noyuanjiaosetimg(context, picurl, viewholder.imageView);
+                        }
                     }
                 }
 
@@ -367,13 +392,15 @@ public class WBTimeLine extends Fragment implements View.OnClickListener{
         }
     }
 
+    class viewholder {
+
+        ImageView imageView;
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==0){
-
+        if (requestCode == 0) {
             statusesAPI.friendsTimeline(0, 0, 50, 1, false, 0, false, shuaxinrequestListener);
-
 
         }
     }

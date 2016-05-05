@@ -18,6 +18,6 @@ public class PicassoHelper {
         Picasso.with(context).load(url).into(view);
     }
     public  static void noyuanjiaosetimg(Context context,String url, ImageView view){
-        Picasso.with(context).load(url).placeholder(R.mipmap.zhanweitu).error(R.mipmap.zhanweitu).config(Bitmap.Config.RGB_565).into(view);
+        Picasso.with(context).load(url).placeholder(R.mipmap.zhanweitu).error(R.mipmap.zhanweitu).config(Bitmap.Config.ARGB_8888).into(view);
     }
 }
