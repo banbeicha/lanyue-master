@@ -561,10 +561,9 @@ public class FinestWebViewActivity extends AppCompatActivity implements AppBarLa
         } else if (viewId == R.id.menuShareVia) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, webView.getUrl());
+            sendIntent.putExtra(Intent.EXTRA_TEXT, webView.getUrl()+"来自@半刻");
             sendIntent.setType("text/plain");
             startActivity(Intent.createChooser(sendIntent, getResources().getString(stringResShareVia)));
-
             hideMenu();
         } else if (viewId == R.id.menuCopyLink) {
             ClipboardHelper.clip(this, webView.getUrl());

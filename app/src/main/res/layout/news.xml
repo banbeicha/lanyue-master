@@ -6,6 +6,11 @@
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/hongse"
+        >
     <android.support.design.widget.TabLayout
         android:id="@+id/shouyetablayout"
         android:layout_width="match_parent"
@@ -13,9 +18,29 @@
         app:tabBackground="@color/hongse"
         app:tabIndicatorColor="#F2B4AE"
         app:tabMode="scrollable"
+        android:paddingRight="20dp"
         app:tabSelectedTextColor="#fff"
+        android:layout_weight="1"
         app:tabTextColor="#EDA6A5"></android.support.design.widget.TabLayout>
-
+       <ImageView
+           android:layout_width="1.5dp"
+           android:layout_height="20dp"
+           android:background="#BFA8A8"
+           android:layout_gravity="center"
+           android:layout_centerVertical="true"
+           android:layout_alignStart="@+id/iv_edit" />
+        <ImageView
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/add"
+            android:layout_gravity="center"
+            android:background="#a0F34B50"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/iv_edit" />
+    </RelativeLayout>
     <android.support.v4.view.ViewPager
         android:id="@+id/shouyeviewpager"
         android:layout_width="match_parent"

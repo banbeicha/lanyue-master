@@ -176,19 +176,21 @@ public class MeiWenActivity extends AppCompatActivity {
         }
     }
 
-    public class MyViewHolder extends XRecyclerView.ViewHolder {
-        ImageView ivnewspic;
-        TextView tvnewstitle, tvnewsdate;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
+    }
+    private class MyViewHolder extends XRecyclerView.ViewHolder {
+        public ImageView ivnewspic;
+        public TextView tvnewstitle;
+        public  TextView tvnewsdate;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             ivnewspic = (ImageView) itemView.findViewById(R.id.ivnewspic);
             tvnewstitle = (TextView) itemView.findViewById(R.id.tvnewstitle);
             tvnewsdate = (TextView) itemView.findViewById(R.id.tvnewsdate);
         }
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
-        return super.onOptionsItemSelected(item);
     }
 }

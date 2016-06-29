@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.wz.lanyue.banke.Fragment.duzhe;
+import com.wz.lanyue.banke.model.DuZhe;
 import com.wz.lanyue.banke.model.MyPlatform;
 import com.wz.lanyue.banke.model.News;
 import com.wz.lanyue.banke.util.ActionBarSetting;
@@ -28,6 +30,7 @@ public class NewsContentActivity extends AppCompatActivity {
     QuickCommentBar qbr;
     private OnekeyShare oks;
     private News news;
+    private boolean isnews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,12 @@ public class NewsContentActivity extends AppCompatActivity {
         oks.setTitle(title);
         oks.setTitleUrl(url);
         oks.setUrl(url);
+        if (isnews){
         oks.setText(title+url+"新闻分享@来自半刻");
+      }
+        else{
+            oks.setText(title+url+"文章分享@来自半刻");
+        }
         oks.setSite("半刻");
         oks.setVenueName("半刻");
         oks.disableSSOWhenAuthorize();
@@ -71,12 +79,24 @@ public class NewsContentActivity extends AppCompatActivity {
 
     private void initdata() {
         intent = getIntent();
+       isnews=intent.getBooleanExtra("isnews",true);
+        if (isnews){
         news = (News) intent.getSerializableExtra("news");
         title = news.getTitle();
         date = DateUtil.getZHdate(news.getCtime());
         url = news.getUrl();
         id = news.getCtime() + title;
-        description = news.getDescription();
+        description = news.getDescription();}
+        else{
+            DuZhe duZhe= (DuZhe) intent.getSerializableExtra("DuZhe");
+            title=duZhe.getTitle();
+            date=duZhe.getDate();
+            date =new duzhe().getDate(date);
+            date=DateUtil.getZHdate(date);
+            url=MyApplication.DuZhe+duZhe.getUrl();
+            description=duZhe.getC_title();
+            id=duZhe.getId();
+        }
         ActionBarSetting.setTitle(getSupportActionBar(), description);
         tvnewstitle = (TextView) findViewById(R.id.tvnewstitle);
         tvnewsdate = (TextView) findViewById(R.id.tvnewsdate);

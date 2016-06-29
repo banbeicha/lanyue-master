@@ -6,8 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/WaveView/WaveView.iml" filepath="$PROJECT_DIR$/WaveView/WaveView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lanyue-master.iml" filepath="$PROJECT_DIR$/lanyue-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/librarys/librarys.iml" filepath="$PROJECT_DIR$/librarys/librarys.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraryss/libraryss.iml" filepath="$PROJECT_DIR$/libraryss/libraryss.iml" />
       <module fileurl="file://$PROJECT_DIR$/likebutton/likebutton.iml" filepath="$PROJECT_DIR$/likebutton/likebutton.iml" />
       <module fileurl="file://$PROJECT_DIR$/oneKeyShareNew/oneKeyShareNew.iml" filepath="$PROJECT_DIR$/oneKeyShareNew/oneKeyShareNew.iml" />

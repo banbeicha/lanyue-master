@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/jingpin" android:title="精品推荐" android:icon="@mipmap/jingpin"></item>
 <item android:title="注销账号" android:id="@+id/Exit" android:icon="@mipmap/exit" ></item>
 </menu>

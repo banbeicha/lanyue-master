@@ -1,5 +1,6 @@
 package com.wz.lanyue.banke;
 
+
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.qq.e.ads.appwall.APPWall;
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
@@ -68,13 +70,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         PushAgent.getInstance(this).onAppStart();
         String device_token = UmengRegistrar.getRegistrationId(this);
         mPushAgent.setPushCheck(true);
-        IntentFilter intentFilter=new IntentFilter();
+        IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-        myBroadcastReceive=new MyBroadcastReceive();
-        registerReceiver(myBroadcastReceive,intentFilter);
+        myBroadcastReceive = new MyBroadcastReceive();
+        registerReceiver(myBroadcastReceive, intentFilter);
         initView();
     }
-
     private void initView() {
         viewPager = (MyViewPager) findViewById(R.id.homeviewPager);
         View v = findViewById(R.id.homeinclude);
@@ -83,28 +84,29 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         shouye = (RadioButton) v.findViewById(R.id.homeincludeshouye);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         View view = navigationView.getHeaderView(0);
-        Menu menu=navigationView.getMenu();
+        Menu menu = navigationView.getMenu();
         menu.findItem(R.id.Exit).setOnMenuItemClickListener(this);
+        menu.findItem(R.id.jingpin).setOnMenuItemClickListener(this);
         ivuserheader = (CircleImageView) view.findViewById(R.id.ivuserheader);
         tvusername = (TextView) view.findViewById(R.id.tvusername);
         tvusername.setOnClickListener(this);
         tvfansinfo = (TextView) view.findViewById(R.id.tvfansinfo);
         tvgerenmiaoshu = (TextView) view.findViewById(R.id.tvgerenmiaoshu);
-        ivusersex= (ImageView) view.findViewById(R.id.ivusersex);
+        ivusersex = (ImageView) view.findViewById(R.id.ivusersex);
         tupian.setOnClickListener(this);
         shouye.setOnClickListener(this);
         meiwen.setOnClickListener(this);
         fragmentList = new ArrayList<Fragment>();
         initFragmentData();
-      initslideruserdata();
+        initslideruserdata();
     }
 
     public void initslideruserdata() {
-        if(MyApplication.isLogin){
-         usersAPI = UserAPIhelper.getUsersAPI(this);
-         long uid = Long.parseLong(MyApplication.getToken(this).getUid());
-         usersAPI.show(uid, mlistener);}
-        else{
+        if (MyApplication.isLogin) {
+            usersAPI = UserAPIhelper.getUsersAPI(this);
+            long uid = Long.parseLong(MyApplication.getToken(this).getUid());
+            usersAPI.show(uid, mlistener);
+        } else {
             tvusername.setText("立即登录");
         }
     }
@@ -116,20 +118,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         public void onComplete(String s) {
             if (!TextUtils.isEmpty(s)) {
                 user = User.parse(s);
-                MyApplication.user=user;
-                PicassoHelper.setimg(HomeActivity.this,user.getAvatar_large(),ivuserheader);
+                MyApplication.user = user;
+                PicassoHelper.setimg(HomeActivity.this, user.getAvatar_large(), ivuserheader);
                 tvusername.setText(user.getScreen_name());
-                if(user.getGender().equals("m")){
-                   ivusersex.setImageResource(R.drawable.userinfo_icon_male);
-                }
-                else{
+                if (user.getGender().equals("m")) {
+                    ivusersex.setImageResource(R.drawable.userinfo_icon_male);
+                } else {
                     ivusersex.setImageResource(R.drawable.userinfo_icon_female);
                 }
-                tvfansinfo.setText("关注 "+user.getFollowers_count()+" | "+"粉丝 "+user.getFriends_count());
-               if(!"".equals(user.getDescription())){
+                tvfansinfo.setText("关注 " + user.getFollowers_count() + " | " + "粉丝 " + user.getFriends_count());
+                if (!"".equals(user.getDescription())) {
 
-                   tvgerenmiaoshu.setText(user.getDescription());
-               }
+                    tvgerenmiaoshu.setText(user.getDescription());
+                }
             }
         }
 
@@ -178,53 +179,55 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.Exit:
-                if(MyApplication.isLogin){
-                new AlertDialog(this).builder().setTitle("提示").setMsg("确定要注销账号并退出吗？").setPositiveButton("确定", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        exit();
-                    }
-                }).setNegativeButton("取消", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                if (MyApplication.isLogin) {
+                    new AlertDialog(this).builder().setTitle("提示").setMsg("确定要注销账号并退出吗？").setPositiveButton("确定", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            exit();
+                        }
+                    }).setNegativeButton("取消", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-                    }
-                }).show();}
-                else{
-                    ToastHelper.show(HomeActivity.this,"你还未登录账号");
+                        }
+                    }).show();
+                } else {
+                    ToastHelper.show(HomeActivity.this, "你还未登录账号");
                 }
-               break;
-
+                break;
+            case R.id.jingpin:
+                APPWall appWall=new APPWall(this,GGActivity.APPID,"3060417240741531");
+                appWall.doShowAppWall();
+                break;
         }
         return true;
     }
 
     private void exit() {
-        mAccessToken= AccessTokenKeeper.readAccessToken(this);
+        mAccessToken = AccessTokenKeeper.readAccessToken(this);
         if (mAccessToken != null && mAccessToken.isSessionValid()) {
-            new LogoutAPI(this,MyApplication.appKey,mAccessToken).logout(new LogoutRequest());
-        }
-        else {
-            ToastHelper.show(HomeActivity.this,"你还未登录账号");
+            new LogoutAPI(this, MyApplication.appKey, mAccessToken).logout(new LogoutRequest());
+        } else {
+            ToastHelper.show(HomeActivity.this, "你还未登录账号");
         }
 
     }
-    private class LogoutRequest implements RequestListener{
+
+    private class LogoutRequest implements RequestListener {
 
 
         @Override
         public void onComplete(String s) {
-            if (!TextUtils.isEmpty(s)){
+            if (!TextUtils.isEmpty(s)) {
                 try {
-                    JSONObject jsonObject=new JSONObject(s);
-                    String result=jsonObject.optString("result");
+                    JSONObject jsonObject = new JSONObject(s);
+                    String result = jsonObject.optString("result");
                     if ("true".equalsIgnoreCase(result)) {
                         AccessTokenKeeper.clear(HomeActivity.this);
                         mAccessToken = null;
-                    }
-                    else if(!"".equalsIgnoreCase(jsonObject.optString("error"))){
+                    } else if (!"".equalsIgnoreCase(jsonObject.optString("error"))) {
                         AccessTokenKeeper.clear(HomeActivity.this);
                         mAccessToken = null;
                     }
@@ -238,7 +241,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onWeiboException(WeiboException e) {
-            ToastHelper.show(HomeActivity.this,"系统异常注销失败");
+            ToastHelper.show(HomeActivity.this, "系统异常注销失败");
         }
     }
+
 }

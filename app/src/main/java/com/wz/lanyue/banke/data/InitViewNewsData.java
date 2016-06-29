@@ -198,7 +198,7 @@ public class InitViewNewsData {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                 context.startActivity(new Intent(context, NewsContentActivity.class).putExtra("news",news));
+                 context.startActivity(new Intent(context, NewsContentActivity.class).putExtra("news",news).putExtra("isnews",true));
                 }
             });
         }
@@ -208,10 +208,10 @@ public class InitViewNewsData {
             return newsArrayList.size();
         }
     }
-
-    private  class MyViewHolder extends XRecyclerView.ViewHolder {
-        ImageView ivnewspic;
-        TextView tvnewstitle, tvnewsdate;
+    private class MyViewHolder extends XRecyclerView.ViewHolder {
+        public  ImageView ivnewspic;
+        public  TextView tvnewstitle;
+        public  TextView tvnewsdate;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -220,4 +220,6 @@ public class InitViewNewsData {
             tvnewsdate = (TextView) itemView.findViewById(R.id.tvnewsdate);
         }
     }
+
+
 }
